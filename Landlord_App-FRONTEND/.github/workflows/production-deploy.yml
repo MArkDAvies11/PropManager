@@ -1,0 +1,29 @@
+name: Production Deploy
+
+on:
+  release:
+    types: [published]
+
+jobs:
+  deploy-production:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Build for production
+      run: npm run build
+      env:
+        REACT_APP_ENVIRONMENT: production
+    
+    - name: Deploy to production
+      run: echo "Deploy to your production server here"

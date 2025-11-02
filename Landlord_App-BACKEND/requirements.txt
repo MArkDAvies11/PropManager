@@ -1,0 +1,38 @@
+# Flask Framework
+Flask==2.3.3
+Flask-RESTful==0.3.10
+Flask-SQLAlchemy==3.0.5
+Flask-Migrate==4.0.5
+Flask-JWT-Extended==4.5.3
+Flask-Bcrypt==1.0.1
+Flask-CORS==4.0.0
+
+# Database
+SQLAlchemy==2.0.36
+psycopg[binary]==3.2.12
+
+# Serialization & Validation
+marshmallow==3.20.1
+marshmallow-sqlalchemy==0.29.0
+
+# Utilities
+python-dotenv==1.0.0
+python-dateutil==2.8.2
+requests==2.31.0
+
+# Production
+gunicorn==21.2.0
+Werkzeug==2.3.7
+
+# Email Service (SendGrid - Required for Capstone)
+sendgrid==6.11.0
+
+# Image Upload (Cloudinary - Required for Capstone)
+cloudinary==1.36.0
+
+# API Documentation (Swagger - Required for Capstone)
+flasgger==0.9.7.1
+
+# Testing
+pytest==7.4.2
+pytest-flask==1.2.0

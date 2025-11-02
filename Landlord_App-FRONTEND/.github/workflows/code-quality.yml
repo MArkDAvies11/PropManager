@@ -1,0 +1,36 @@
+name: Code Quality
+
+on:
+  push:
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  quality-checks:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v3
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: npm install
+    
+    - name: Check code formatting
+      run: npx prettier --check "src/**/*.{js,jsx,json,css,md}"
+      continue-on-error: true
+    
+    - name: Security audit
+      run: npm audit --audit-level moderate
+      continue-on-error: true
+    
+    - name: Bundle size check
+      run: |
+        npm run build
+        npx bundlesize
+      continue-on-error: true
